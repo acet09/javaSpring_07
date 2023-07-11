@@ -17,13 +17,10 @@ public class HelloWorldController {
 		return new HelloWorldBean("Hello World Bean");
 	}
 
-	// Path Parameters
-	// /users/{id}/todos/{id}
-
 	@GetMapping(path = "/hello-world/path-variable/{name}")
 	public HelloWorldBean helloWorldPathVariable(@PathVariable String name) {
 		// return new HelloWorldBean("welcome " + name);
-		return new HelloWorldBean(String.format("welcome,%s", name));
+		return new HelloWorldBean(String.format("welcome, %s", name));
 	}
 
 }
