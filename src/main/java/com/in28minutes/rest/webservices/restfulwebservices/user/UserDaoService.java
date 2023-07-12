@@ -13,15 +13,22 @@ public class UserDaoService {
 	private static List<User> users = new ArrayList<>();
 	
 	
+// type-1
 	private static int usersCount = 0;
-
 	static {
 		users.add(new User(++usersCount, "Adam", LocalDate.now().minusYears(30)));
 		users.add(new User(++usersCount, "jim", LocalDate.now().minusYears(15)));
 		users.add(new User(++usersCount, "cote", LocalDate.now().minusYears(22)));
 	}
 
-	//	private static int usersCount = 3;
+//  type -2	
+//	static {
+//		users.add(new User(1, "Adam", LocalDate.now().minusYears(30)));
+//		users.add(new User(2, "jim", LocalDate.now().minusYears(15)));
+//		users.add(new User(3, "cote", LocalDate.now().minusYears(22)));
+//	}
+//	private static int usersCount = 3;
+
 	
 	public List<User> findAll() {
 		return users;
@@ -38,4 +45,10 @@ public class UserDaoService {
 		return users.stream().filter(predicate).findFirst().orElse(null);
 	}
 
+	public void deleteById(int id) {
+		Predicate<? super User> predicate = user -> user.getId().equals(id);
+		users.removeIf(predicate);
+	}
+	
+	
 }
